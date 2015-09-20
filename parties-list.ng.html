@@ -24,8 +24,8 @@
   </form>
   <ul>
     <li ng-repeat="party in partyList.parties">
-      <span>Id</span>
-      {{party._id}}
+      <!--<span>Id</span>-->
+      <!--{{party._id}}-->
       <a href="/parties/{{party._id}}">{{party.name}}</a>
       <p>{{party.description}}</p>
       <button ng-click="partyList.remove(party)">X</button>
