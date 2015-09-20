@@ -1,7 +1,10 @@
 Parties = new Mongo.Collection("parties");
 
 if (Meteor.isClient) {
-    angular.module('angeor',['angular-meteor','ui-router']);
+    var injectParams = ['$scope', '$location', '$routeParams',
+        '$timeout', 'config', 'dataService', 'modalService'];
+
+    angular.module('angeor',['$scope','angular-meteor','ui-router']);
 
     angular.module('angeor')
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
@@ -16,7 +19,7 @@ if (Meteor.isClient) {
                     controller: 'PartiesListCtrl'
                 })
                 .state('partyDetails', {
-                    url: '/parties/:partyId',
+                    url: '/parties/:vm.partyId',
                     templateUrl: 'party-details.ng.html',
                     controller: 'PartyDetailsCtrl'
                 });
