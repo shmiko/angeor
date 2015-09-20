@@ -12,12 +12,12 @@ if (Meteor.isClient) {
         .state('parties', {
           url: '/parties',
           templateUrl: 'parties-list.ng.html',
-          controller: 'PartiesListCtrl'
+          controllerAs: 'PartiesListCtrl as partyList'
         })
         .state('partyDetails', {
           url: '/parties/:partyId',
           templateUrl: 'party-details.ng.html',
-          controller: 'PartyDetailsCtrl'
+          controllerAs: 'PartyDetailsCtrl as partyDetail'
         });
 
       $urlRouterProvider.otherwise("/parties");
