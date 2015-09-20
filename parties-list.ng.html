@@ -15,8 +15,6 @@
 <!--</ul>-->
 <div ng-controller="PartiesListCtrl as partyList">
   <form>
-    <label>Id</label>
-    <input ng-model="partyList.newParty._id">
     <label>Name</label>
     <input ng-model="partyList.newParty.name">
     <label>Description</label>
@@ -26,7 +24,9 @@
   </form>
   <ul>
     <li ng-repeat="party in partyList.parties">
-      <a href="/parties/{{partyList.party._id}}">{{party.name}}</a>
+      <span>Id</span>
+      {{party._id}}
+      <a href="/parties/{{party._id}}">{{party.name}}</a>
       <p>{{party.description}}</p>
       <button ng-click="partyList.remove(party)">X</button>
     </li>
