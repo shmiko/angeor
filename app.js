@@ -3,7 +3,8 @@ Parties = new Mongo.Collection("parties");
 if (Meteor.isClient) {
     angular.module('angeor',['angular-meteor','ui-router']);
 
-    angular.module('angeor').config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
+    angular.module('angeor')
+        .config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
         function($urlRouterProvider, $stateProvider, $locationProvider){
 
             $locationProvider.html5Mode(true);
@@ -21,30 +22,30 @@ if (Meteor.isClient) {
                 });
 
             $urlRouterProvider.otherwise("/parties");
-        }]);
+    }]);
 
     angular.module('angeor')
       .controller('PartiesListCtrl', ['$meteor', function ($meteor) {
 
           var vm = this;
-    //$scope.parties = [
-    //  {
-    //    'name': 'Dubstep-Free Zone',
-    //    'description': 'Can we please just for an evening not listen to dubstep.'
-    //  },
-    //  {
-    //    'name': 'All dubstep all the time',
-    //    'description': 'Get it on!'
-    //  },
-    //  {
-    //    'name': 'Savage lounging',
-    //    'description': 'Leisure suit required. And only fiercest manners.'
-    //  },
-    //  {
-    //    'name': 'All mixymix',
-    //    'description': 'Get up!'
-    //  }
-    //];
+        //$scope.parties = [
+        //  {
+        //    'name': 'Dubstep-Free Zone',
+        //    'description': 'Can we please just for an evening not listen to dubstep.'
+        //  },
+        //  {
+        //    'name': 'All dubstep all the time',
+        //    'description': 'Get it on!'
+        //  },
+        //  {
+        //    'name': 'Savage lounging',
+        //    'description': 'Leisure suit required. And only fiercest manners.'
+        //  },
+        //  {
+        //    'name': 'All mixymix',
+        //    'description': 'Get up!'
+        //  }
+        //];
 
           vm.parties = $meteor.collection(Parties);
 
@@ -56,12 +57,13 @@ if (Meteor.isClient) {
           vm.removeAll = function(){
           vm.parties.remove();
       };
-  }]);
+    }]);
 
-    angular.module("angeor").controller("PartyDetailsCtrl", ['$stateParams',
+    angular.module("angeor")
+        .controller("PartyDetailsCtrl", ['$stateParams',
         function( $stateParams){
             var vm = this;
-            vm.partyId = $stateParams.partyId;
+            vm.partyId = $stateParams.vm.partyId;
 
         }]);
 }
