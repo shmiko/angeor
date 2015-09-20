@@ -23,22 +23,23 @@ if (Meteor.isClient) {
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('socially').controller('PartiesListCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
-    $scope.parties = $meteor.collection(Parties);
+  angular.module('socially').controller('PartiesListCtrl', [, '$meteor', function ($scope, $meteor) {
+    var vm = this;
+    vm.parties = $meteor.collection(Parties);
 
-    $scope.remove = function(party){
-      $scope.parties.remove(party);
+    vm.remove = function(party){
+      vm.parties.remove(party);
     };
 
-    $scope.removeAll = function(){
-      $scope.parties.remove();
+    vm.removeAll = function(){
+      vm.parties.remove();
     };
   }]);
 
-  angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
-    function($scope, $stateParams){
-
-      $scope.partyId = $stateParams.partyId;
+  angular.module("socially").controller("PartyDetailsCtrl", [ '$stateParams',
+    function( $stateParams){
+      var vm = this;
+      vm.partyId = $stateParams.vm.partyId;
 
     }]);
 }
