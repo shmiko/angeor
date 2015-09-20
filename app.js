@@ -23,23 +23,23 @@ if (Meteor.isClient) {
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('angeor').controller('PartiesListCtrl', [ '$meteor', function ( $meteor) {
+  angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', function ( $scope,$meteor) {
     var vm = this;
-    vm.parties = $meteor.collection(Parties);
+    $scope.parties = $meteor.collection(Parties);
 
-    vm.remove = function(party){
-      vm.parties.remove(party);
+    $scope.remove = function(party){
+      $scope.parties.remove(party);
     };
 
-    vm.removeAll = function(){
-      vm.parties.remove();
+    $scope.removeAll = function(){
+      $scope.parties.remove();
     };
   }]);
 
-  angular.module("angeor").controller("PartyDetailsCtrl", [ '$stateParams',
-    function( $stateParams){
+  angular.module("angeor").controller("PartyDetailsCtrl", [ '$scope','$stateParams',
+    function( $scope, $stateParams){
       var vm = this;
-      vm.partyId = $stateParams.vm.partyId;
+      $scope.partyId = $stateParams.partyId;
 
     }]);
 }
