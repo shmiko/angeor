@@ -1,9 +1,9 @@
 Parties = new Mongo.Collection("parties");
 
 if (Meteor.isClient) {
-  angular.module('socially', ['angular-meteor', 'ui.router']);
+  angular.module('angeor', ['angular-meteor', 'ui.router']);
 
-  angular.module('socially').config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
+  angular.module('angeor').config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
     function($urlRouterProvider, $stateProvider, $locationProvider){
 
       $locationProvider.html5Mode(true);
@@ -23,7 +23,7 @@ if (Meteor.isClient) {
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('socially').controller('PartiesListCtrl', [ '$meteor', function ( $meteor) {
+  angular.module('angeor').controller('PartiesListCtrl', [ '$meteor', function ( $meteor) {
     var vm = this;
     vm.parties = $meteor.collection(Parties);
 
@@ -36,7 +36,7 @@ if (Meteor.isClient) {
     };
   }]);
 
-  angular.module("socially").controller("PartyDetailsCtrl", [ '$stateParams',
+  angular.module("angeor").controller("PartyDetailsCtrl", [ '$stateParams',
     function( $stateParams){
       var vm = this;
       vm.partyId = $stateParams.vm.partyId;
@@ -56,7 +56,7 @@ if (Meteor.isServer) {
           'description': 'Leisure suit required. And only fiercest manners.'}
       ];
       for (var i = 0; i < parties.length; i++)
-        Parties.insert(parties[i]);
+        vm.Parties.insert(parties[i]);
     }
   });
 }
