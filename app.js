@@ -23,7 +23,7 @@ if (Meteor.isClient) {
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('socially').controller('PartiesListCtrl', [, '$meteor', function ($scope, $meteor) {
+  angular.module('socially').controller('PartiesListCtrl', [ '$meteor', function ($scope, $meteor) {
     var vm = this;
     vm.parties = $meteor.collection(Parties);
 
