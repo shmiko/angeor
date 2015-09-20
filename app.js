@@ -1,54 +1,34 @@
 Parties = new Mongo.Collection("parties");
 
 if (Meteor.isClient) {
-    var injectParams = ['$scope', '$location', '$routeParams',
-        '$timeout', 'config', 'dataService', 'modalService'];
 
-    angular.module('angeor',['$scope','angular-meteor','ui-router']);
+    angular.module('angeor',['angular-meteor','ui-router']);
 
     angular.module('angeor')
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
-        function($urlRouterProvider, $stateProvider, $locationProvider){
+            function($urlRouterProvider, $stateProvider, $locationProvider){
 
-            $locationProvider.html5Mode(true);
+                $locationProvider.html5Mode(true);
 
-            $stateProvider
-                .state('parties', {
-                    url: '/parties',
-                    templateUrl: 'parties-list.ng.html',
-                    controller: 'PartiesListCtrl'
-                })
-                .state('partyDetails', {
-                    url: '/parties/:vm.partyId',
-                    templateUrl: 'party-details.ng.html',
-                    controller: 'PartyDetailsCtrl'
-                });
+                $stateProvider
+                    .state('parties', {
+                        url: '/parties',
+                        templateUrl: 'parties-list.ng.html',
+                        controller: 'PartiesListCtrl'
+                    })
+                    .state('partyDetails', {
+                        url: '/parties/:partyId',
+                        templateUrl: 'party-details.ng.html',
+                        controller: 'PartyDetailsCtrl'
+                    });
 
-            $urlRouterProvider.otherwise("/parties");
-    }]);
+                $urlRouterProvider.otherwise("/parties");
+            }]);
 
     angular.module('angeor')
       .controller('PartiesListCtrl', ['$meteor', function ($meteor) {
 
           var vm = this;
-        //$scope.parties = [
-        //  {
-        //    'name': 'Dubstep-Free Zone',
-        //    'description': 'Can we please just for an evening not listen to dubstep.'
-        //  },
-        //  {
-        //    'name': 'All dubstep all the time',
-        //    'description': 'Get it on!'
-        //  },
-        //  {
-        //    'name': 'Savage lounging',
-        //    'description': 'Leisure suit required. And only fiercest manners.'
-        //  },
-        //  {
-        //    'name': 'All mixymix',
-        //    'description': 'Get up!'
-        //  }
-        //];
 
           vm.parties = $meteor.collection(Parties);
 
@@ -58,8 +38,8 @@ if (Meteor.isClient) {
       };
 
           vm.removeAll = function(){
-          vm.parties.remove();
-      };
+              vm.parties.remove();
+          };
     }]);
 
     angular.module("angeor")
