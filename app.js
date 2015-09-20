@@ -1,8 +1,29 @@
 Parties = new Mongo.Collection("parties");
 
 if (Meteor.isClient) {
-  angular.module('angeor',['angular-meteor','ui-router']);
-  angular.module('angeor')
+    angular.module('angeor',['angular-meteor','ui-router']);
+
+    angular.module('angeor').config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
+        function($urlRouterProvider, $stateProvider, $locationProvider){
+
+            $locationProvider.html5Mode(true);
+
+            $stateProvider
+                .state('parties', {
+                    url: '/parties',
+                    templateUrl: 'parties-list.ng.html',
+                    controller: 'PartiesListCtrl'
+                })
+                .state('partyDetails', {
+                    url: '/parties/:partyId',
+                    templateUrl: 'party-details.ng.html',
+                    controller: 'PartyDetailsCtrl'
+                });
+
+            $urlRouterProvider.otherwise("/parties");
+        }]);
+
+    angular.module('angeor')
       .controller('PartiesListCtrl', ['$meteor', function ($meteor) {
 
           var vm = this;
@@ -36,6 +57,13 @@ if (Meteor.isClient) {
           vm.parties.remove();
       };
   }]);
+
+    angular.module("angeor").controller("PartyDetailsCtrl", ['$stateParams',
+        function( $stateParams){
+            var vm = this;
+            vm.partyId = $stateParams.partyId;
+
+        }]);
 }
 
 if (Meteor.isServer) {
