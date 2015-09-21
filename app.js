@@ -17,13 +17,14 @@ if (Meteor.isClient) {
         .state('partyDetails', {
           url: '/parties/:partyId',
           templateUrl: 'party-details.ng.html',
-          controllerAs: 'PartyDetailsCtrl as partyDetail'
+          //controllerAs: 'PartyDetailsCtrl as partyDetail'
+            controllerAs: 'PartiesListCtrl as partyList'
         });
 
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', function ( $scope,$meteor) {
+  angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', '$stateParams', function ( $scope,$meteor,$stateParams) {
     var vm = this;
     vm.parties = $meteor.collection(Parties);
 
@@ -34,14 +35,20 @@ if (Meteor.isClient) {
     vm.removeAll = function(){
       vm.parties.remove();
     };
+
+    $scope.partyId = $stateParams.partyId;
   }]);
 
-  angular.module("angeor").controller("PartyDetailsCtrl", [ '$scope','$stateParams',
-    function( $scope, $stateParams){
-      var vm = this;
-      vm.partyId = $stateParams.partyId;
-
-    }]);
+  //angular.module("angeor").controller("PartyDetailsCtrl", [ '$scope','$stateParams',
+  //  function( $scope, $stateParams){
+  //    var vm = this;
+  //    vm.partyId = $stateParams.partyId;
+  //
+  //  }]);
+  angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
+      function($scope, $stateParams){
+      $scope.partyId = $stateParams.partyId;
+     }]);
 }
 
 if (Meteor.isServer) {
