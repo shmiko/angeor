@@ -15,8 +15,8 @@ if (Meteor.isClient) {
           controllerAs: 'PartiesListCtrl as partyList'
         })
         .state('partyDetails', {
-          url: '/parties/:partyId',
-          templateUrl: 'party-details.ng.html',
+          url: '/parties/:vm.partyId',
+          templateUrl: 'angeor/party-details.ng.html',
           controllerAs: 'PartyDetailsCtrl as partyDetail'
         });
 
@@ -39,7 +39,7 @@ if (Meteor.isClient) {
   angular.module("angeor").controller("PartyDetailsCtrl", [ '$scope','$stateParams',
     function( $scope, $stateParams){
       var vm = this;
-      vm.partyId = $stateParams.vm.partyId;
+      vm.partyId = $stateParams.partyId;
 
     }]);
 }
