@@ -16,7 +16,7 @@ if (Meteor.isClient) {
         })
         .state('partyDetails', {
           url: '/parties/:partyId',
-          templateUrl: 'angeor/party-details.ng.html',
+          templateUrl: 'party-details.ng.html',
           controllerAs: 'PartyDetailsCtrl as partyDetail'
         });
 
