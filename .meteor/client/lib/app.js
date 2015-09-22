@@ -1,4 +1,4 @@
-Parties = new Mongo.Collection("parties");
+
 
 if (Meteor.isClient) {
   angular.module('angeor', ['angular-meteor', 'ui.router']);
