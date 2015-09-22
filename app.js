@@ -24,7 +24,7 @@ if (Meteor.isClient) {
       $urlRouterProvider.otherwise("/parties");
     }]);
 
-  angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', '$stateParams', function ( $scope,$meteor,$stateParams) {
+  angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor',  function ( $scope,$meteor) {
     var vm = this;
     vm.parties = $meteor.collection(Parties);
 
