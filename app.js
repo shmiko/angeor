@@ -19,7 +19,7 @@ if (Meteor.isClient) {
           url: '/parties/:partyId',
           templateUrl: 'party-details.ng.html',
           //controllerAs: 'PartyDetailsCtrl as partyDetail'
-            controllerAs: 'PartyDetailsCtrl'
+            controller: 'PartyDetailsCtrl'
         });
 
       $urlRouterProvider.otherwise("/parties");
