@@ -45,7 +45,7 @@ if (Meteor.isClient) {
   //    vm.partyId = $stateParams.partyId;
   //
   //  }]);
-  angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
+  angular.module("angeor").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
       function($scope, $stateParams){
 
       $scope.partyId = $stateParams.partyId;
