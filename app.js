@@ -25,7 +25,7 @@ if (Meteor.isClient) {
     }]);
 
   angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', '$stateParams', function ( $scope,$meteor,$stateParams) {
-    var vm = this;
+    //var vm = this;
     $scope.parties = $meteor.collection(Parties);
 
     $scope.remove = function(party){
