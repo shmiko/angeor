@@ -12,31 +12,32 @@ if (Meteor.isClient) {
         .state('parties', {
           url: '/parties',
           templateUrl: 'parties-list.ng.html',
-          controllerAs: 'PartiesListCtrl as partyList'
+            controller: 'PartiesListCtrl',
+            controllerAs: 'vm'
         })
         .state('partyDetails', {
           url: '/parties/:partyId',
           templateUrl: 'party-details.ng.html',
           //controllerAs: 'PartyDetailsCtrl as partyDetail'
-            controllerAs: 'PartiesListCtrl as partyList'
+            controllerAs: 'PartyDetailsCtrl'
         });
 
       $urlRouterProvider.otherwise("/parties");
     }]);
 
   angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor', '$stateParams', function ( $scope,$meteor,$stateParams) {
-    //var vm = this;
-    $scope.parties = $meteor.collection(Parties);
+    var vm = this;
+    vm.parties = $meteor.collection(Parties);
 
-    $scope.remove = function(party){
-      $scope.parties.remove(party);
+    vm.remove = function(party){
+      vm.parties.remove(party);
     };
 
-    $scope.removeAll = function(){
-      $scope.parties.remove();
+    vm.removeAll = function(){
+      vm.parties.remove();
     };
 
-    $scope.partyId = $stateParams.partyId;
+    vm.partyId = $stateParams.partyId;
   }]);
 
   //angular.module("angeor").controller("PartyDetailsCtrl", [ '$scope','$stateParams',
