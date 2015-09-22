@@ -39,11 +39,11 @@ if (Meteor.isClient) {
   }]);
 
 
-  angular.module("angeor").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
-      function($scope, $stateParams){
+  angular.module("angeor").controller("PartyDetailsCtrl", ['$scope', '$stateParams','$meteor',
+      function($scope, $stateParams, $meteor){
 
-        $scope.partyId = $stateParams.partyId;
-
+        //$scope.partyId = $stateParams.partyId;
+        $scope.party = $meteor.object(Parties, $stateParams.partyId);
       }]);
 }
 
