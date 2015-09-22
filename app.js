@@ -43,7 +43,7 @@ if (Meteor.isClient) {
       function($scope, $stateParams, $meteor){
 
         //$scope.partyId = $stateParams.partyId;
-        $scope.party = $meteor.object(Parties, $stateParams.partyId);
+        $scope.party = $meteor.object(Parties, $stateParams.partyId, false);
       }]);
 }
 
