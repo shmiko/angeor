@@ -19,7 +19,8 @@
     <input ng-model="vm.newParty.name">
     <label>Description</label>
     <input ng-model="vm.newParty.description">
-    <button ng-click="vm.parties.save(vm.newParty); vm.newParty='';">Add</button>
+    <!--<button ng-click="vm.parties.save(vm.newParty); vm.newParty='';">Add</button>-->
+    <button ng-click="vm.newParty.owner=$root.currentUser._id; vm.parties.push(vm.newParty)">Add</button>
     <button ng-click="vm.removeAll()">Remove All</button>
   </form>
   <ul>
