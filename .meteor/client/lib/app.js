@@ -1,7 +1,4 @@
-
-
-
-  angular.module('angeor', ['angular-meteor', 'ui.router']);
+angular.module('angeor', ['angular-meteor', 'ui.router']);
 
 
 

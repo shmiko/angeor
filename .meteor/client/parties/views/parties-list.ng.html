@@ -13,24 +13,24 @@
     <!--<button ng-click="remove(party)">X</button>-->
   <!--</li>-->
 <!--</ul>-->
-<div ng-controller="PartiesListCtrl as partyList">
+<!--<div ng-controller="PartiesListCtrl as partyList">-->
   <form>
     <label>Name</label>
-    <input ng-model="partyList.newParty.name">
+    <input ng-model="vm.newParty.name">
     <label>Description</label>
-    <input ng-model="partyList.newParty.description">
-    <button ng-click="partyList.parties.save(partyList.newParty); partyList.newParty='';">Add</button>
-    <button ng-click="partyList.removeAll()">Remove All</button>
+    <input ng-model="vm.newParty.description">
+    <button ng-click="vm.parties.save(vm.newParty); vm.newParty='';">Add</button>
+    <button ng-click="vm.removeAll()">Remove All</button>
   </form>
   <ul>
-    <li ng-repeat="party in partyList.parties">
+    <li ng-repeat="party in vm.parties">
       <!--<span>Id</span>-->
       <!--{{party._id}}-->
       <a href="/parties/{{party._id}}">{{party.name}}</a>
       <p>{{party.name}}</p>
 
       <p>{{party.description}}</p>
-      <button ng-click="partyList.remove(party)">X</button>
+      <button ng-click="vm.remove(party)">X</button>
     </li>
   </ul>
-</div>
+<!--</div>-->

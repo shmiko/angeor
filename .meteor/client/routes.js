@@ -9,13 +9,13 @@ angular.module('angeor').config(['$urlRouterProvider', '$stateProvider', '$locat
         $stateProvider
             .state('parties', {
                 url: '/parties',
-                templateUrl: 'parties-list.ng.html',
+                templateUrl: 'client/parties/views/parties-list.ng.html',
                 controller: 'PartiesListCtrl',
                 controllerAs: 'vm'
             })
             .state('partyDetails', {
                 url: '/parties/:partyId',
-                templateUrl: 'party-details.ng.html',
+                templateUrl: 'client/parties/views/party-details.ng.html',
                 controller: 'PartyDetailsCtrl'
             });
 
