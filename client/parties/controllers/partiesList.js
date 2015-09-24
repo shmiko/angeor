@@ -30,7 +30,11 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
       $scope.parties.remove();
     };
 
-      $scope.pageChanged = function(newPage) {
-          $scope.page = newPage;
-      };
+    $scope.pageChanged = function(newPage) {
+      $scope.page = newPage;
+    };
+    $scope.$watch('orderProperty', function(){
+      if ($scope.orderProperty)
+          $scope.sort = {name: parseInt($scope.orderProperty)};
+    });
   }]);
