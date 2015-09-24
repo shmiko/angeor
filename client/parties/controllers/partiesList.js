@@ -1,16 +1,13 @@
-/**
- * Created by pauljones on 23/09/15.
- */
-angular.module('angeor').controller('PartiesListCtrl', [ '$scope','$meteor',  function ( $scope,$meteor) {
-    var vm = this;
-    vm.parties = $meteor.collection(Parties);
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
+  function($scope, $meteor){
 
-    vm.remove = function(party){
-        vm.parties.remove(party);
+    $scope.parties = $meteor.collection(Parties);
+
+    $scope.remove = function(party){
+      $scope.parties.splice( $scope.parties.indexOf(party), 1 );
     };
 
-    vm.removeAll = function(){
-        vm.parties.remove();
+    $scope.removeAll = function(){
+      $scope.parties.remove();
     };
-
-}]);
+  }]);

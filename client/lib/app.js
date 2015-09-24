@@ -1,6 +1,1 @@
-angular.module('angeor', ['angular-meteor', 'ui.router']);
-
-
-
-
-
+angular.module('socially',['angular-meteor', 'ui.router']);
