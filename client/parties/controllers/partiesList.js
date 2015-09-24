@@ -9,11 +9,18 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
         sort : $scope.sort
       });
     });
-    $meteor.subscribe('parties', {
-      limit: parseInt($scope.perPage),
-      skip: parseInt(($scope.page - 1) * $scope.perPage),
-      sort: $scope.sort
+
+    $meteor.autorun($scope, function() {
+      $meteor.subscribe('parties', {
+          limit: parseInt($scope.perPage),
+          skip: parseInt(($scope.page - 1) * $scope.perPage),
+          sort: $scope.sort
+      }).then(function(){
+          $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
+      });
     });
+
+
 
     $scope.remove = function(party){
       $scope.parties.splice( $scope.parties.indexOf(party), 1 );
