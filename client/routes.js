@@ -27,6 +27,11 @@ angular.module('angeor').config(['$urlRouterProvider', '$stateProvider', '$locat
                 url: '/parties/:partyId',
                 templateUrl: 'client/parties/views/party-details.ng.html',
                 controller: 'PartyDetailsCtrl'
+                resolve: {
+                    "currentUser": ["$meteor", function($meteor){
+                        return $meteor.requireUser();
+                    }]
+                }
             });
 
         $urlRouterProvider.otherwise("/parties");
