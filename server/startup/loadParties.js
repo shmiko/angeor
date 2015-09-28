@@ -11,4 +11,5 @@ Meteor.startup(function () {
     for (var i = 0; i < parties.length; i++)
       Parties.insert({name: parties[i].name, description: parties[i].description});
   }
+
 });
